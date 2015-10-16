@@ -20,13 +20,18 @@ public class CalculatorTest {
 	}
 
 	@Test
-	public void testTowNumbers() {
+	public void testTwoNumbers() {
 		assertEquals(3, Calculator.add("1,2"));
 	}
 
 	@Test
-	public void testTowNumbers2() {
+	public void testMany() {
 		assertEquals(32, Calculator.add("1,2,3,4,5,8,9"));
+	}
+
+	@Test
+	public void testNewLine() {
+		assertEquals(32, Calculator.add("1,2,3\n4,5,8,9"));
 	}
 
 }
