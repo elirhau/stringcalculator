@@ -50,7 +50,19 @@ public class CalculatorTest {
 	@Test
 	(expected = IllegalArgumentException.class)
 		public void testNegativeNumbers() {
-		assertEquals("Negatives not allowed: -1,-3", Calculator.add("-1,2,-3"));}
-
+		assertEquals("Negatives not allowed: -1,-3", Calculator.add("-1,2,-3"));
 	}
 
+	
+
+	@Test
+	public void testBigNumbers() {
+		assertEquals(3, Calculator.add("//;\n1;2;2000"));
+	}
+
+	@Test
+	public void testBigNumbers2() {
+		assertEquals(8, Calculator.add("//;\n1;2;2000;3033;5"));
+	}
+
+}

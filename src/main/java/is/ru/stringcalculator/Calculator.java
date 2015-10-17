@@ -5,8 +5,6 @@ public class Calculator {
 	public static int add(String text)
 	{
 		
-
-		
 		if(text.contains("-"))
 		{
 			 String error = "Negatives not allowed: ";
@@ -34,6 +32,7 @@ public class Calculator {
 		}
 
 		String [] number = splitNumbers(text);
+		number = tooBig(number);
 		int summ = sum(number);
 
 
@@ -60,9 +59,26 @@ public class Calculator {
     private static int sum(String[] numbers)
     {
  	    int total = 0;
-        for(String number : numbers){
+        for(String number : numbers)
+        {
 		    total += toInt(number);
 		}
 		return total;
+    }
+
+
+    private static String[] tooBig(String[] numbers)
+    {
+ 	  	for(int i = 0; i < numbers.length; i++)
+		{
+			String c = numbers[i];
+			int tala = toInt(c);
+			if( tala > 1000)
+			{
+				numbers[i] = "0";
+			}
+		}
+ 	   	
+		return numbers;
     }
 }
