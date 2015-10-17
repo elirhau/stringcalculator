@@ -8,20 +8,24 @@ public class Calculator {
 		if(text.contains("-"))
 		{
 			 String error = "Negatives not allowed: ";
+					 
+			String num = "";
+			String totalMessage = "";
 			 
 			 for(int i = 0; i < text.length(); i++)
 			 {
 				 if(text.substring(i, i+1).contains("-"))
-				 {
-					 if(i > 0)
-					 {
-						error = error + ",";
-					 }
-					 error = error + text.substring(i, i+2);
+				 { 
+					 num = num + text.substring(i, i+2);
+					 
+					 totalMessage = error + num;
+					 
+					 num = num + ",";
 				 }
+				 
+				 
 			 }
-
-			throw new IllegalArgumentException(error);	 
+ 			 throw new IllegalArgumentException(error);	 
 		}
 
 		

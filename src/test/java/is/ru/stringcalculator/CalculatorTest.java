@@ -50,7 +50,7 @@ public class CalculatorTest {
 	@Test
 	(expected = IllegalArgumentException.class)
 		public void testNegativeNumbers() {
-		assertEquals("Negatives not allowed: -1,-3", Calculator.add("-1,2,-3"));
+		assertEquals("Negatives not allowed: -1,-3", Calculator.add("-5,1,-1,2,-3"));
 	}
 
 	
