@@ -39,4 +39,18 @@ public class CalculatorTest {
 		assertEquals(3, Calculator.add("//;\n1;2"));
 	}
 
-}
+	@Test
+	(expected = IllegalArgumentException.class)
+	public void testNegativeOneNumber() {
+		assertEquals("Negatives not allowed: -1", Calculator.add("-1,2"));
+	}
+
+	
+
+	@Test
+	(expected = IllegalArgumentException.class)
+		public void testNegativeNumbers() {
+		assertEquals("Negatives not allowed: -1,-3", Calculator.add("-1,2,-3"));}
+
+	}
+
