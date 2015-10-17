@@ -5,6 +5,8 @@ public class Calculator {
 	public static int add(String text)
 	{
 		
+
+		
 		if(text.contains("-"))
 		{
 			 String error = "Negatives not allowed: ";
@@ -38,8 +40,7 @@ public class Calculator {
 		String [] number = splitNumbers(text);
 		number = tooBig(number);
 		int summ = sum(number);
-
-
+		
 		return summ;
 	}	
 
@@ -52,9 +53,31 @@ public class Calculator {
 	{
 		if(numbers.startsWith("//"))
 		{
-			String sp = numbers.substring(2, 3);
-			String num = numbers.substring(4);
-			return num.split(sp);
+			
+			if(numbers.substring(2,3).equals("["))
+			{
+				int i;
+				for(i = 0; i < numbers.length(); i++)
+				{
+					if(numbers.substring(i, i+1).equals("]"))
+					{
+						break;
+					}
+				}
+				
+				String del = numbers.substring(3,i);
+				String[] newNum = numbers.split("\n");
+				String temp = newNum[1];
+				temp = temp.replace(del, ";");
+				
+				return temp.split(";");
+			}
+			else
+			{
+				String sp = numbers.substring(2, 3);
+				String num = numbers.substring(4);
+				return num.split(sp);
+			}
 		}
 	    
 	    return numbers.split("[, \n]");
@@ -63,8 +86,7 @@ public class Calculator {
     private static int sum(String[] numbers)
     {
  	    int total = 0;
-        for(String number : numbers)
-        {
+        for(String number : numbers){
 		    total += toInt(number);
 		}
 		return total;
@@ -73,11 +95,9 @@ public class Calculator {
 
     private static String[] tooBig(String[] numbers)
     {
- 	  	for(int i = 0; i < numbers.length; i++)
+ 	   	for(int i = 0; i < numbers.length; i++)
 		{
-			String c = numbers[i];
-			int tala = toInt(c);
-			if( tala > 1000)
+			if(Integer.parseInt(numbers[i]) > 100)
 			{
 				numbers[i] = "0";
 			}
@@ -85,4 +105,5 @@ public class Calculator {
  	   	
 		return numbers;
     }
+
 }
