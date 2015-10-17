@@ -22,6 +22,13 @@ public class Calculator {
 
 	private static String[] splitNumbers(String numbers)
 	{
+		if(numbers.startsWith("//"))
+		{
+			String sp = numbers.substring(2, 3);
+			String num = numbers.substring(4);
+			return num.split(sp);
+		}
+	    
 	    return numbers.split("[, \n]");
 	}
       

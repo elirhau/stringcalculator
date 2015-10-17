@@ -34,4 +34,9 @@ public class CalculatorTest {
 		assertEquals(32, Calculator.add("1,2,3\n4,5,8,9"));
 	}
 
+	@Test
+	public void testDeli() {
+		assertEquals(3, Calculator.add("//;\n1;2"));
+	}
+
 }
