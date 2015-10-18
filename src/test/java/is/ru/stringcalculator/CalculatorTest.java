@@ -39,19 +39,18 @@ public class CalculatorTest {
 		assertEquals(3, Calculator.add("//;\n1;2"));
 	}
 
-	@Test
-	(expected = IllegalArgumentException.class)
-	public void testNegativeOneNumber() {
-		assertEquals("Negatives not allowed: -1", Calculator.add("-1,2"));
-	}
 
-	
-
-	@Test
-	(expected = IllegalArgumentException.class)
-		public void testNegativeNumbers() {
-		assertEquals("Negatives not allowed: -5,-1,-3", Calculator.add("-5,1,-1,2,-3"));
-	}
+	@Test(expected = RuntimeException.class)  
+    public void testThrowExecptionForNegativeNumbers(){
+    	try{
+    		Calculator.add("2,-4,3,-5");
+    	}
+    	catch (RuntimeException ex){
+    		
+    		assertEquals("Negatives not allowed: -4,-5",ex.getMessage());
+    		throw ex;
+    	}
+    }	
 
 	
 

@@ -27,7 +27,7 @@ public static int add(String text)
 				 
 				 
 			 }
- 			 throw new IllegalArgumentException(error);	 
+ 			 throw new IllegalArgumentException(totalMessage);	 
 		}
 
 		
