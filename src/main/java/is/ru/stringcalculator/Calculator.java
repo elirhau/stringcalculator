@@ -3,35 +3,10 @@ package is.ru.stringcalculator;
 public class Calculator {
 
 public static int add(String text)
-	{
-		
+	{		
 
+		negative(text);
 		
-		if(text.contains("-"))
-		{
-			 String error = "Negatives not allowed: ";
-					 
-			String num = "";
-			String totalMessage = "";
-			 
-			 for(int i = 0; i < text.length(); i++)
-			 {
-				 if(text.substring(i, i+1).contains("-"))
-				 { 
-					 num = num + text.substring(i, i+2);
-					 
-					 totalMessage = error + num;
-					 
-					 num = num + ",";
-				 }
-				 
-				 
-			 }
- 			 throw new IllegalArgumentException(totalMessage);	 
-		}
-
-		
-
 		if(text.equals(""))
 		{	
 			return 0;
@@ -101,5 +76,30 @@ public static int add(String text)
 		}
  	   	
 		return numbers;
+    }
+
+    private static void negative(String text)
+    {
+    	if(text.contains("-"))
+		{
+			String error = "Negatives not allowed: ";		 
+			String num = "";
+			String totalMessage = "";
+			 
+			for(int i = 0; i < text.length(); i++)
+			{
+				if(text.substring(i, i+1).contains("-"))
+				{ 
+					num = num + text.substring(i, i+2);
+					 
+					totalMessage = error + num;
+					 
+					num = num + ",";
+				}
+				 
+				 
+			}
+ 			throw new IllegalArgumentException(totalMessage);	 
+		}
     }
 }

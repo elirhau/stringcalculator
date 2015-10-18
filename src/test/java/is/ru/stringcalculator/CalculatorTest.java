@@ -16,7 +16,7 @@ public class CalculatorTest {
 
 	@Test
 	public void testOneNumber() {
-		assertEquals(1, Calculator.add("1"));
+		assertEquals(2, Calculator.add("2"));
 	}
 
 	@Test
@@ -52,7 +52,17 @@ public class CalculatorTest {
     	}
     }	
 
-	
+	@Test(expected = RuntimeException.class)  
+    public void testThrowExecptionForNegativeNumbers2(){
+    	try{
+    		Calculator.add("-2,-4,3,-5");
+    	}
+    	catch (RuntimeException ex){
+    		
+    		assertEquals("Negatives not allowed: -2,-4,-5",ex.getMessage());
+    		throw ex;
+    	}
+    }
 
 	@Test
 	public void testBigNumbers() {
