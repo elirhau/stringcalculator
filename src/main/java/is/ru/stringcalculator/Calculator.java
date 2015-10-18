@@ -2,7 +2,7 @@ package is.ru.stringcalculator;
 
 public class Calculator {
 
-	public static int add(String text)
+public static int add(String text)
 	{
 		
 
@@ -54,30 +54,27 @@ public class Calculator {
 		if(numbers.startsWith("//"))
 		{
 			
-			if(numbers.substring(2,3).equals("["))
+			String del = "";
+			String num = numbers.substring(2);
+			String first = num.substring(0, num.indexOf("\n"));
+			String last = num.substring(num.indexOf("\n") + 1, num.length());
+			
+			for(int i = 0; i < first.length(); i++)
 			{
-				int i;
-				for(i = 0; i < numbers.length(); i++)
+				if(first.substring(i, i + 1).equals("["))
 				{
-					if(numbers.substring(i, i+1).equals("]"))
-					{
-						break;
-					}
+					del = "";
 				}
-				
-				String del = numbers.substring(3,i);
-				String[] newNum = numbers.split("\n");
-				String temp = newNum[1];
-				temp = temp.replace(del, ";");
-				
-				return temp.split(";");
+				else if(first.substring(i, i + 1).equals("]"))
+				{
+					last = last.replace(del, ";");
+				}
+				else
+				{
+					del = del + first.substring(i, i + 1);
+				}
 			}
-			else
-			{
-				String sp = numbers.substring(2, 3);
-				String num = numbers.substring(4);
-				return num.split(sp);
-			}
+			return last.split(";");
 		}
 	    
 	    return numbers.split("[, \n]");
@@ -105,5 +102,4 @@ public class Calculator {
  	   	
 		return numbers;
     }
-
 }

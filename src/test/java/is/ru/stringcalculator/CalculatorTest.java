@@ -75,4 +75,10 @@ public class CalculatorTest {
 		assertEquals(15, Calculator.add("//[****]\n10****2****3"));
 	}
 
+	@Test
+	public void testKata8() {
+		assertEquals(6, Calculator.add("//[*][%]\n1*2%3"));
+	}
+
+
 }
